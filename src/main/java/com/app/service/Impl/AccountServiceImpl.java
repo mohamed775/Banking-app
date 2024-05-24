@@ -4,13 +4,16 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.app.entity.Account;
 import com.app.repository.AccountRepo;
 import com.app.service.AccountService;
 
+@Service
 public class AccountServiceImpl implements AccountService {
 
+	
 	@Autowired
 	private AccountRepo accountRepo;
 

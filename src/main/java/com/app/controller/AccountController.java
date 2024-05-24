@@ -1,6 +1,7 @@
 package com.app.controller;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,14 +50,16 @@ public class AccountController {
 	}
 	
 	
-	@PostMapping("/deposit")
-	public ResponseEntity<Account> deposit( @RequestBody Long id ,@RequestBody double amount){
+	@PostMapping("/{id}/deposit")
+	public ResponseEntity<Account> deposit( @PathVariable Long id ,@RequestBody Map<String, Double> request){
+		double amount = request.get("amount");
 		return ResponseEntity.ok(accountService.deposit(id, amount));
 	}
 	
 	
-	@PostMapping("/withdraw")
-	public ResponseEntity<Account> withdraw(@RequestBody Long id ,@RequestBody double amount){
+	@PostMapping("/{id}/withdraw")
+	public ResponseEntity<Account> withdraw(@PathVariable Long id ,@RequestBody Map<String, Double> request){
+		double amount = request.get("amount");
 		return ResponseEntity.ok(accountService.withdraw(id, amount));
 	}
 	

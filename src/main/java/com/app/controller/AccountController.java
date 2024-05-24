@@ -27,14 +27,14 @@ public class AccountController {
 	
 	
 	@GetMapping
-	public ResponseEntity<List<Account>> getAllAcaount(){
-		return ResponseEntity.ok(accountService.findAllAccount()) ;
+	public List<Account> getAllAcaount(){
+		return accountService.findAllAccount() ;
 	}
 	
 	
 	@GetMapping("/{id}")
-	public Optional<Account> getAccountByID(@PathVariable  Long id){
-		return accountService.getAccount(id);
+	public Account getAccountByID(@PathVariable  Long id){
+		return accountService.getAccount(id).get();
 	}
 	
 	@PostMapping("/user")
